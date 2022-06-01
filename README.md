@@ -1,9 +1,8 @@
 # MailGuard Digest Parser
 
-Scripts that allow for easy reading of MailGuard email quarantine digests. Will take a .eml file name as input upon script run.
-There are two versions of this script provided:
+Scripts that allow for easy reading of MailGuard email quarantine digests. Will take an AutoTask ticket number and output tabular view of quarantined items, sorted by severity score. 
 
-## Parse-MailGuardDigest
+## Parse-MailGuardDigestAutoTask
 
 Allows for easy viewing of MailGuard email quarantine summaries in a tabular format, sorted by severity score.
 
@@ -20,10 +19,3 @@ Score Recipient                      Sender                                     
 12.8  jason@company.com.au           51876-90975-131959-13188-jason=company.com.au@mail.textspeech.rest                   Clear Vision in 6-Seconds? Just Do THIS???                      
 12.9  jason@company.com.au           51824-90975-131959-13185-jason=company.com.au@mail.flexonship.co                     Opening an email never felt so good                             
 ```
-
-## Parse-MailGuardDigestHTML
-
-Allows for easy viewing of MailGuard email quarantine summaries in the HTML format provided by MailGuard.
-This version essentially just decrypts the second block in the digest, and does not sort by severity score.
-
-![HTML Digest View](https://imgur.com/s4TaVT2.png)
