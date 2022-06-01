@@ -12,8 +12,6 @@
 #
 ##############################################################################
 
-# TESTING TICKET: T20220531.0056
-
 # GET TICKET/ATTACHMENT
 
 # Get user API credentials
