@@ -3,8 +3,10 @@
 #
 # Description:
 #   Parse MailGuard Quarantine Digest for Easy Reading 
-#   in provided HTML format
-#
+#   in HTML format provided by MailGuard.
+#   This version essentially just decodes the second base64 block in the 
+#   digest, and does not sort by severity score.
+# 
 #   VERSION 1.0
 #
 #   AUTHOR
