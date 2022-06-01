@@ -16,6 +16,27 @@ $fileName = Read-Host ".eml digest file"
 
 $digestFile = Get-Content $fileName 
 
+# PARSE ATTACHMENT
+Write-Output "Parsing..."
+
+$firstLine = 0
+$lastLine = 0
+$count = 1
+
+$firstLineBuffer = 2
+$lastLineBuffer = 3
+
+# get start and end location of b64 block, using nearby markers
+$digestFile | foreach {
+    if ($firstLine -eq 0 -and $_ -match 'Content-Transfer-Encoding: base64') { 
+        $firstLine = $count + $firstLineBuffer
+    }
+    if ($_ -like 'Content-Type: text/html; charset="UTF-8"') {
+        $lastLine = $count - $lastLineBuffer
+    }
+    ++$count
+}
+
 # decode base 64 into plaintext
 $encodedText = $digestFile[$firstLine..$lastLine] -join ''
 $plaintext = [System.Text.Encoding]::ASCII.GetString([System.Convert]::FromBase64String($encodedtext)) 
@@ -54,6 +75,7 @@ $plaintextArray | foreach {
 
 # output all items in table
 # sorted by lowest score
+$dateTime = get-date -Format "dd-MM-yyyy-HH-mm-ss"
 Write-Output $table | Sort -Property Score | Format-Table -AutoSize
-Write-Output $table | Sort -Property Score | Format-Table -AutoSize | Out-File $("$pwd\$ticketTitle.txt") -Width 512
-Write-Output "Output to '$($ticketTitle)'.txt"
+Write-Output $table | Sort -Property Score | Format-Table -AutoSize | Out-File "$($dateTime).txt"
+Write-Output "Output to $($dateTime).txt"
