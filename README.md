@@ -1,12 +1,22 @@
 # MailGuard Digest Parser
 
-Scripts that allow for easy reading of MailGuard email quarantine digests. Will take an AutoTask ticket number and output tabular view of quarantined items, sorted by severity score. 
+Scripts that allow for easier reading of MailGuard email quarantine digests. 
+
+There are two versions of this script provided:
+
+
+
+
+
+## Parse-MailGuardDigestLocal
+
+Will take the name of a local .eml file as input and output a tabular view of quarantined items, sorted by severity score.
 
 ## Parse-MailGuardDigestAutoTask
 
-Allows for easy viewing of MailGuard email quarantine summaries in a tabular format, sorted by severity score.
+Will take an AutoTask ticket number as input and output a tabular view of quarantined items, sorted by severity score. API details will be asked for upon script run. Incorrect details will exit the script. This may take slightly longer, depending on your internet connection, as it must download the digest data from AutoTask. 
 
-Output example:
+## Output example:
 
 ```
 Score Recipient                      Sender                                                                               Subject                                                         
